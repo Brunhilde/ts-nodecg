@@ -1,6 +1,6 @@
 /// <reference types="socket.io" />
 
-import {Application, RequestHandler} from 'express';
+import {Application, RequestHandler, Router} from 'express';
 import {NodecgCommon} from './helper/nodecg';
 import {
 	ReplicantMap,
@@ -48,6 +48,7 @@ export type CreateNodecgInstance<
 > = NodecgCommon<TBundleName, TBundleConfig> & {
 	getSocketIOServer(): SocketIO.Server;
 	mount: Application['use'];
+	readonly Router: typeof Router;
 	util: {
 		authCheck: RequestHandler;
 	};
