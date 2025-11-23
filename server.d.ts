@@ -20,21 +20,21 @@ export class Replicant<
 		listener: (
 			newValue: TReplicantMap[TName],
 			oldValue: TReplicantMap[TName] | undefined,
-		) => void,
+		) => void | Promise<void>,
 	): this;
 	once(
 		event: 'change',
 		listener: (
 			newValue: TReplicantMap[TName],
 			oldValue: TReplicantMap[TName] | undefined,
-		) => void,
+		) => void | Promise<void>,
 	): this;
 	removeListener(
 		event: 'change',
 		listener: (
 			newValue: TReplicantMap[TName],
 			oldValue: TReplicantMap[TName] | undefined,
-		) => void,
+		) => void | Promise<void>,
 	): this;
 	removeAllListeners(event: 'change'): this;
 }
@@ -109,7 +109,7 @@ export type CreateNodecgInstance<
 									error: TError extends null ? never : TError,
 								): void;
 						  }),
-		) => void,
+		) => void | Promise<void>,
 	): void;
 	readReplicant<TName extends keyof TReplicantMap & string>(
 		name: TName,
@@ -184,7 +184,7 @@ export type CreateNodecgInstance<
 													: TError,
 											): void;
 									  }),
-					) => void,
+					) => void | Promise<void>,
 				): void;
 				readReplicant<TName extends keyof TReplicantMap & string>(
 					name: TName,
